@@ -25,7 +25,7 @@ Essa API é parte da Trilha Spring Boot do programa ONE da ALura e é a tentativ
 - Buscar tópico por ID
 - Atualizar tópico
 - Deletar tópico
-> Requisições protegidas com validação de token JWT
+> Requisições protegidas com validação de token JWT.
 
 ## 📃 Pré-Requisitos
 - Java JDK 21
@@ -106,12 +106,12 @@ Body JSON {
 }
 
 Response {
-  "id": id,
+  "id": 1,
   "titulo": "Titulo 1",
   "mensagem": "Mensagem legal / dúvida...",
   "data": "data_criacao",
   "status": "NAO_RESPONDIDO",
-  "autorId": autorId,
+  "autorId": 1,
   "curso": "Curso 1"
 }
 ```
@@ -124,12 +124,12 @@ GET /topicos
 Authorization: Bearer {token}
 
 Response {
-  "id": id,
+  "id": 1,
   "titulo": "Titulo 1",
   "mensagem": "Mensagem legal / dúvida...",
   "data": "data_criacao",
   "status": "NAO_RESPONDIDO",
-  "autorId": autorId,
+  "autorId": 1,
   "curso": "Curso 1"
 },
 { . . . }
@@ -139,17 +139,17 @@ Response {
 - Detalha informações sobre algum tópico especifico
 - Rota protegida
 ```
-GET /topicos/{id}
+GET /topicos/1
 Authorization: Bearer {token}
 
 Response {
-  "id": id,
-  "titulo": "titulo",
-  "mensagem": "mensagem",
+  "id": 1,
+  "titulo": "Titulo 1",
+  "mensagem": "Mensagem legal / dúvida...",
   "data": "data_criacao",
-  "status": "STATUS",
-  "autorId": autorId,
-  "curso": "curso"
+  "status": "NAO_RESPONDIDO",
+  "autorId": 1,
+  "curso": "Curso 1"
 }
 ```
 
@@ -158,7 +158,7 @@ Response {
 - Rota protegida
 - Apenas titulo e mensagem são **obrigatórios**
 ```
-PUT /topicos/{id}
+PUT /topicos/1
 Authorization: Bearer {token}
 Body JSON {
   "titulo": "Titulo 2",
@@ -168,9 +168,9 @@ Body JSON {
 
 Response {
   "id": id,
-  "titulo": "Titulo 1",
-  "mensagem": "Mensagem legal / dúvida...",
-  "status": "NAO_RESPONDIDO",
+  "titulo": "Titulo 2",
+  "mensagem": "Mensagem",
+  "status": "FECHADO"
   "data": "data_criacao"
 }
 ```
@@ -179,6 +179,6 @@ Response {
 - Exclui um tópico do banco de dados
 - Rota protegida
 ```
-DELETE /topicos/{id}
+DELETE /topicos/1
 Authorization: Bearer {token}
 ```
